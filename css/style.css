@@ -1,0 +1,180 @@
+.affixadd{
+    background-color:rgb(22, 90, 145);
+    color:#fff;
+    border: 5px solid rgb(22, 90, 145);
+}
+.affixadd:hover {
+   background-color: rgb(88, 148, 238);
+   border: 5px solid rgb(88, 148, 238);
+
+}
+.affixadd a{
+    color: #fff;
+}
+.affixadd a:hover{
+    text-decoration: none;
+}
+
+.affixup{
+    background-color:rgb(74, 65, 77);
+    color:#fff;
+
+}
+
+.affixup:hover {
+
+    border: 5px solid rgb(149, 144, 151);
+    background-color: rgb(149, 144, 151);
+}
+
+.affixup a{
+     color: #fff;
+}
+
+.affixup a:hover{
+     text-decoration: none;
+     color: white;
+ }
+
+.affixdel{
+    background-color:rgb(250, 68, 83);
+    color:#fff;
+}
+
+.affixdel:hover{
+    background-color:rgb(187, 14, 28);
+    color:#fff;
+}
+
+.affixdel a{
+    color: white;
+}
+
+/* affix pour la finalisation  */
+.affixfin{
+    background-color:rgb(143, 42, 177);
+    color:#fff;
+
+}
+
+.affixfin:hover {
+
+    background-color: rgb(57, 24, 70);
+}
+
+.affixfin:hover h1{
+
+    color: white;
+}
+
+.affixfin a{
+     color: #fff;
+}
+
+.affixfin a:hover{
+     text-decoration: none;
+     color: white;
+ }
+ /* fin affixfin */
+
+ /* affix pour la validation  */
+.affixval{
+    background-color:rgb(41, 221, 116);
+    color:#fff;
+
+}
+
+.affixval:hover {
+
+    background-color: rgb(24, 71, 32);
+}
+
+.affixval:hover h1{
+
+    color: white;
+}
+
+.affixval a{
+     color: #fff;
+}
+
+.affixval a:hover{
+     text-decoration: none;
+     color: white;
+ }
+
+/* CSS gestion des annonces */
+.affixaddA{
+    background-color:rgb(121, 150, 37);
+    color:#fff;
+}
+.affixaddA:hover {
+
+    background-color: rgb(210, 245, 10);
+}
+
+.affixaddA a{
+     color: #fff;
+}
+
+.affixaddA a:hover{
+     text-decoration: none;
+     color: white;
+ }
+
+ /* CSS pour lister les dossier */
+ .affixlist{
+     background-color: #d91ed6;
+     color:#fff;
+ }
+ .affixlist:hover {
+
+     background-color: #530c52;
+ }
+
+ .affixlist a{
+      color: white;
+      text-decoration: none;
+ }
+
+ .affixlist a:hover{
+      text-decoration: none;
+      color: white;
+  }
+
+  .affixlist:hover h1{
+       color: white;
+   }
+
+ /* fin affixaddA */
+.affixupA{
+    background-color:rgb(187, 98, 214);
+    color:#fff;
+    border-radius: 2px;
+
+}
+.affixdelA{
+    background-color:rgb(250, 68, 83);
+    color:#fff;
+    border: 2px;
+}
+
+
+/* css du tableau validation des taches */
+
+td{
+    text-align: center;
+}
+tr th{
+    font-size: 20px;
+    text-align: center;
+}
+
+label{
+    color: black;
+
+}
+
+/* div{
+    background-image: url()
+} */
