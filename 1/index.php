@@ -36,6 +36,12 @@ session_start();
         //     echo $value['mois'].' prix '.$value['total'].'<br>';
         // }
         // exit();
+        $users=$requete->getUsers();
+        $revenu = $requete->getRevenu(date('Y'));
+        $revenu=number_format($revenu[0]['total']);
+
+        $semaine = $requete->getConsultationSemaine(date('Y-m-d'));
+
          require 'vues/1.php';
      } else {
          # code...

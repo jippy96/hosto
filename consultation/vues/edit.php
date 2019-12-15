@@ -53,9 +53,9 @@
                             <div class="col-md-12" style="margin-left: -10px;">
                                 <nav aria-label="breadcrumb" >
                                     <ol class="breadcrumb" style="background-color: white;">
-                                        <li class="breadcrumb-item"><a href="../?road=accueil" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
+                                        <li class="breadcrumb-item"><a href="../?road=manage" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
                                         <li class="breadcrumb-item"><a href="./"><i class="zmdi zmdi-folder"></i> Consultation</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"><i class="zmdi zmdi-folder"></i> Création</li>
+                                        <li class="breadcrumb-item active" aria-current="page"><i class="zmdi zmdi-folder"></i> Modification</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -63,20 +63,20 @@
                         <br>
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="text-center">Enregistrement d'une nouvelle consultation</h3>
+                                <h3 class="text-center">Modification d'une consultation</h3>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-12 col-lg-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                    </div>
+                                    <!-- <div class="card-header">
+                                    </div> -->
                                     <div class="card-body card-block">
-                                        <form action="./?action=send" method="post" class="">
+                                        <form action="./?action=editsend" method="post" class="">
                                             <div class="row">
                                                 <!-- infos patient -->
-
+                                                <br>
                                                 <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-md-12"><h3 class="text-center">Informations du Patient</h3></div>
@@ -86,13 +86,13 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Nom du Patient</label>
-                                                                <input required type="text" id="nf-email" name="nom" placeholder="Entrer son nom.." class="form-control">
+                                                                <input required type="text" id="nf-email" name="nom" value="<?= $consultation['nom'] ?>" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Prénom(s) du Patient</label>
-                                                                <input required type="text" id="nf-email" name="prenom" placeholder="Entrer son prénom.." class="form-control">
+                                                                <input required type="text" id="nf-email" name="prenom" value="<?= $consultation['prenoms'] ?>" class="form-control">
                                                             </div>
                                                         </div> 
                                                     </div>
@@ -100,23 +100,33 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Age du Patient</label>
-                                                                <input required type="number" id="nf-email" name="age" placeholder="Entrer son age.." class="form-control">
+                                                                <input required type="number" id="nf-email" name="age" value="<?= $consultation['age'] ?>" class="form-control">
                                                             </div>
                                                         </div>  
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Sexe du Patient</label>
                                                                 <select required name="sexe" class="form-control">
-                                                                    <option value="null" selected>Choisir...</option>
-                                                                    <option value="m">Masculin</option>
-                                                                    <option value="f">Féminin</option>
+                                                                    <?php if ($consultation['sexe'] == 'm' or $consultation['sexe']=='M') {
+                                                                        # code...
+                                                                        ?>
+                                                                        <option value="M" selected>Masculin</option> <option value="F">Féminin</option>
+                                                                        <?php
+                                                                    } else {
+                                                                        # code...
+                                                                        ?>
+                                                                        <option value="F" seelcted>Féminin</option> <option value="M">Masculin</option>
+                                                                        <?php
+                                                                    }
+                                                                     ?>
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Adresse du Patient</label>
-                                                                <input required type="text" id="nf-email" name="adresse" placeholder="Entrer son adresse.." class="form-control">
+                                                                <input required type="text" id="nf-email" name="adresse" value="<?= $consultation['adresse'] ?>"class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -131,13 +141,13 @@
                                                         <div class="col-md-7">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Identifiant du Patient</label>
-                                                                <input type="text" name="identifiant" placeholder="EX: Numéro de Bon , Indigenat" class="form-control">                                                       </div>
+                                                                <input type="text" name="identifiant" value="<?= $consultation['identifiant_Patient'] ?>" class="form-control">                                                       </div>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Catégorie du Patient</label>
                                                                 <select required name="categorie" class="form-control">
-                                                                    <option value="null" selected>Choisir...</option>
+                                                                    <option selected></option>
                                                                     <option>ANAIM</option>
                                                                     <option>CBG</option>
                                                                     <option>P.E.C</option>
@@ -152,14 +162,14 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Date de Rendez-Vous du client</label>
-                                                                <input required type="date" class="form-control" name="rdv">
+                                                                <input required type="date" value="<?= $consultation['date_rdv'] ?>" class="form-control" name="rdv">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="nf-email" class=" form-control-label">Médecins Traitants</label>
                                                                 <select required name="medecin" class="form-control">
-                                                                    <option value="null" selected>Choisir...</option>
+                                                                    <option selected></option>
                                                                     <?php foreach ($medecins as $key => $medecin) {
                                                                         # code...
                                                                     ?>
@@ -185,7 +195,7 @@
                                                     <div class="form-group">
                                                         <label for="nf-email" class=" form-control-label">Type d'indication du médecin</label>
                                                         <select required name="indication" class="form-control">
-                                                            <option value="null" selected>Choisir...</option>
+                                                            <option selected></option>
                                                             <?php foreach ($indications as $key => $indication) {
                                                                         # code...
                                                             ?>
@@ -209,23 +219,24 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="nf-email" class=" form-control-label">Nombre de Séance(s)</label>
-                                                        <input required type="number" class="form-control" name="seance">
+                                                        <input required type="number" value="<?= $consultation['nombre_Seance'] ?>" class="form-control" name="seance">
                                         
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="nf-email" class=" form-control-label">Prix par Séance</label>
-                                                        <input required type="number" class="form-control" name="prix" placeholder="EX: 250.000 GNF">                                       
+                                                        <input required type="number" value="<?= $consultation['prix_Seance'] ?>" class="form-control" name="prix" placeholder="EX: 250.000 GNF">                                       
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="nf-email" class=" form-control-label">Faire un commentaire (optionel)</label>
-                                                        <textarea name="comment" class="form-control" cols="30" rows="3"></textarea>
+                                                        <textarea name="comment" value="<?= $consultation['commentaire'] ?>" class="form-control" cols="30" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="text" name="id" value="<?= $consultation['id_Consultation'] ?>" hidden>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary btn-lg">
                                                     <i class="fa fa-dot-circle-o"></i> Enregistrer
@@ -241,6 +252,8 @@
                                 </div>
                             </div>
                         </div>
+                        <?php require '../global/footer.php' ?>
+
                     </div>                        
                 </div>
             </div>        

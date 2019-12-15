@@ -65,6 +65,41 @@ session_start();
 
             // var_dump($consultation[0]); exit();
             require 'vues/view.php';
+        }elseif ($_GET['action']=='editconsultation') {
+            # code...
+            $consultation = htmlspecialchars(($_GET['consultation']));
+            $consultation = $requete->getConsultation($consultation)[0];
+            $medecins = $requete->getMedecins();
+            $indications = $requete->getIndications();
+
+            require 'vues/edit.php';
+
+        }elseif ($_GET['action']=='editsend') {
+            # code...
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom = htmlspecialchars($_POST['prenom']);
+            $sexe = htmlspecialchars($_POST['sexe']);
+            $age = htmlspecialchars($_POST['age']);
+            $adresse = htmlspecialchars($_POST['adresse']);
+            $idMedecin = htmlspecialchars($_POST['medecin']);
+            $idIndication = htmlspecialchars($_POST['indication']);
+            $prix = htmlspecialchars($_POST['prix']);
+            $seance = htmlspecialchars($_POST['seance']);
+            $identifiant = htmlspecialchars($_POST['identifiant']);
+            $categorie = htmlspecialchars($_POST['categorie']);
+            $rdv = htmlspecialchars($_POST['rdv']);
+            $comment = htmlspecialchars($_POST['comment']);
+
+            $result=$requete->updateConsultation($_POST['id'],$identifiant,$categorie,$comment,$rdv,$prix,$seance,$idMedecin,$idIndication,$nom,$prenom,$age,$sexe,$adresse);
+
+            
+            if ($result=="correct") {
+                # code...
+                header('Location: ./?action=setting');
+            } else {
+                # code...
+            }
+            
         } else {
             # code...
         }

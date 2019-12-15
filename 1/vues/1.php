@@ -64,7 +64,7 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>10368</h2>
+                                                <h2><?= $users[0]['users'] ?></h2>
                                                 <span>Utilisateur(s)</span>
                                             </div>
                                         </div>
@@ -79,12 +79,12 @@
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                            <div class="icon">
+                                            <!-- <div class="icon">
                                                 <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
+                                            </div> -->
                                             <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>Cette Semaine</span>
+                                                <h2><?= $semaine[0]['semaine'] ?></h2>
+                                                <span>consultation(s) cette Semaine</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -97,12 +97,10 @@
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
+                                            
                                             <div class="text">
-                                                <h2>$1,060,386</h2>
-                                                <span>Revenu</span>
+                                                <h2><?=  $revenu ?> GNF</h2>
+                                                <span>Revenu annuel <?= date('Y') ?></span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -152,7 +150,7 @@
                         <br>
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-striped">
+                                <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th class="text-center" scope="col">Mois</th>
@@ -168,7 +166,7 @@
                                             <tr>
                                                 <td class="text-center"><?= $mois[$value['mois']] ?></td>
                                                 <td class="text-center"><?= $value['nombre'] ?></td>
-                                                <td class="text-center"><?= $value['total'] ?> GNF</td>
+                                                <td class="text-center"><?= number_format($value['total']) ?> GNF</td>
                                             </tr>
                                         <?php
                                         }

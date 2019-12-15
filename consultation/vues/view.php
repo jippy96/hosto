@@ -53,7 +53,7 @@
                             <div class="col-md-12" style="margin-left: -10px;">
                                 <nav aria-label="breadcrumb" >
                                     <ol class="breadcrumb" style="background-color: white;">
-                                        <li class="breadcrumb-item"><a href="../?road=manage" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
+                                        <li class="breadcrumb-item"><a href="../?road=accueil" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
                                         <li class="breadcrumb-item active" aria-current="page"><i class="zmdi zmdi-folder"></i> Consultation</li>
                                     </ol>
                                 </nav>
@@ -122,12 +122,11 @@
                                                 <div class="col-md-12">
                                                     <label for="">Nom du Médecin : <?= $consultation[0]['nomMedecin'].' '.$consultation[0]['prenomsMedecin'] ?></label>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <label for="">Indication de traitement : <?= $consultation[0]['libelle_Indication'] ?></label>
                                                 </div>
                                             </div>
                                             <br>
-                                            <a href=""><button class="btn btn-secondary btn-lg btn-block">Quitter</button></a>
                                         </div>
                                 </div>
                             </div>                           

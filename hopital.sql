@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2019 at 01:47 PM
+-- Generation Time: Dec 15, 2019 at 09:55 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -47,12 +47,9 @@ CREATE TABLE `consultation` (
 --
 
 INSERT INTO `consultation` (`id_Consultation`, `identifiant_Patient`, `categorie_Patient`, `date_rdv`, `date_Consultation`, `prix_Seance`, `nombre_Seance`, `id_Medecin`, `id_Patient`, `id_Indication`, `commentaire`) VALUES
-(1, 'Numéro de Bon', 'ANAIM', '2019-12-20', '2019-11-11', '20000', 20, 1, 17, 3, ''),
-(2, 'Numéro de Bon', 'ANAIM', '2019-12-20', '2019-11-10', '20000', 20, 1, 18, 3, ''),
-(3, 'Indigenat', 'CBG', '2019-12-05', '2019-05-12', '499984', 20, 1, 19, 1, 'ok'),
-(4, 'Indigenat', 'CBG', '2019-12-12', '2019-12-10', '50000', 20, 3, 20, 3, 'ok'),
-(5, '100221', 'CBG', '2019-12-25', '2019-12-13', '50000', 25, 3, 21, 3, ''),
-(6, 'numero de bon', 'P.E.C', '2019-12-24', '2019-12-15', '10000', 10, 1, 22, 1, '');
+(1, '100221', 'CBG', '2019-12-22', '2019-12-15', '75000', 10, 1, 1, 1, ''),
+(2, 'Indigenat', 'INDIGENAT', '2019-12-17', '2019-12-15', '10000', 5, 1, 2, 1, ''),
+(3, '2010', 'P.E.C', '2019-12-26', '2019-12-15', '30000', 5, 1, 3, 3, '');
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,10 @@ CREATE TABLE `indication` (
 
 INSERT INTO `indication` (`id_Indication`, `libelle_Indication`) VALUES
 (1, 'Torticolis'),
-(3, 'IMC');
+(2, 'IMC'),
+(3, 'Entorse'),
+(4, 'osteosynthese'),
+(5, 'kine respiratoire');
 
 -- --------------------------------------------------------
 
@@ -91,9 +91,7 @@ CREATE TABLE `medecin` (
 --
 
 INSERT INTO `medecin` (`id_Medecin`, `nomMedecin`, `prenomsMedecin`, `contact`) VALUES
-(1, 'koundouno', 'Jean Paul', '00221776602651'),
-(3, 'Gning', 'Niania', '779862011'),
-(4, 'Dembélé', 'm\'bamakan', '782001548');
+(1, 'Koivogui', 'Patrice Koma', '620671549');
 
 -- --------------------------------------------------------
 
@@ -115,17 +113,9 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id_Patient`, `nom`, `prenoms`, `age`, `sexe`, `adresse`) VALUES
-(3, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(4, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(5, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(6, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(7, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(17, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(18, 'koundouno', 'Jean-Paul', 20, 'm', 'liberté3'),
-(19, 'Bah', 'Aliou', 25, 'm', 'liberté3'),
-(20, 'ok', 'ok', 25, 'm', 'ko'),
-(21, 'haba', 'perrin', 12, 'm', 'castor'),
-(22, 'dembélé', 'm\'bamakan', 25, 'f', 'fass');
+(1, 'Camara', 'Moussa', 25, 'm', 'cbg'),
+(2, 'Barry', 'Fatoumata', 30, 'f', 'liberté3'),
+(3, 'soumah', 'fatou', 25, 'F', 'conakry');
 
 -- --------------------------------------------------------
 
@@ -145,7 +135,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_Users`, `pseudo`, `password`, `nomPrenoms`) VALUES
-(2, 'jippy', 'e9483d314d48064a513db48a04e0ed255aeae4c2', 'koundouno jean-paul');
+(6, 'koma', 'bf83bc1e62873b892874ea9ac89d5046afec801f', 'Patrice Koma Koivogui');
 
 --
 -- Indexes for dumped tables
@@ -192,31 +182,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `consultation`
 --
 ALTER TABLE `consultation`
-  MODIFY `id_Consultation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_Consultation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `indication`
 --
 ALTER TABLE `indication`
-  MODIFY `id_Indication` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_Indication` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `medecin`
 --
 ALTER TABLE `medecin`
-  MODIFY `id_Medecin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_Medecin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id_Patient` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_Patient` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_Users` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

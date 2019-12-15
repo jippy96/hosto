@@ -38,6 +38,26 @@ session_start();
             }
             
 
+         }elseif ($_GET['action']=='create') {
+             # code...
+             require 'vues/2.php';
+         }elseif ($_GET['action']=='created') {
+             # code...
+             $username = htmlspecialchars($_POST['username']);
+             $nom = htmlspecialchars($_POST['nom']);
+             $pass = htmlspecialchars($_POST['password']);
+             $pass2 = htmlspecialchars($_POST['password2']);
+
+            if ($pass==$pass2) {
+                # code...
+                $requete->insertUser($username,sha1($pass),$nom);
+                header('Location: ./');
+            } else {
+                # code...
+                header('Location: ./?action=create');
+
+            }
+            
          } else {
              # code...
          }

@@ -31,14 +31,7 @@ Class Requetes
                     echo "Erreur de connexion à la base de données";
             }
         }
-        //déconnection
-        public  function deconnect(){
-            try{
-                    $this->close();
-            }catch(Exception $e){
-                echo $e;
-            }
-        }
+       
         //sélecteur
         private function select($req, $params, $methode=PDO::FETCH_NAMED){
             $req = $this->base->prepare($req);
@@ -106,7 +99,7 @@ Class Requetes
 
         // requete qui met a jour les infos du medecin
         public function updateMedecin($nom,$prenom,$contact,$id){
-            $req = 'update medecin set nom=:nom,prenoms=:prenom,contact=:contact where id_Medecin=:id';
+            $req = 'update medecin set nomMedecin=:nom,prenomsMedecin=:prenom,contact=:contact where id_Medecin=:id';
             $params = array(
                 "nom"=>$nom,
                 "prenom"=>$prenom,
@@ -278,6 +271,96 @@ Class Requetes
 
             return $this->select($req,$params);
         }
+
+        // requete qui retourne le nombre de users
+        public function getUsers(){
+            $req= 'select count(*) users from users';
+            $params = array();
+
+            return $this->select($req,$params);
+        }
+
+        // retourne le nombre de dossiers dans la semaine
+        public function getConsultationSemaine($date){
+            $req="select count(*) semaine from consultation where DATEDIFF(:date,date_Consultation)<=7 ";
+            $params=array(
+                "date"=>$date
+            );
+
+            return $this->select($req,$params);
+        }
+
+    // retourne le revenue annuel
+
+    public function getRevenu($annee){
+        $req="select sum(prix_seance*nombre_seance) total from consultation where YEAR(date_Consultation)=:annee";
+        $params = array(
+            "annee"=>$annee
+        );
+
+        return $this->select($req,$params);
+    }
+
+    // met a jour une consultation
+
+    public function updateConsultation($id,$identifiant,$categorie,$comment,$date,$prix,$seance,$idMedecin,$idIndication,$nom,$prenom,$age,$sexe,$adresse){
+        try {
+            $this->base->beginTransaction();
+
+            $req ='update consultation set identifiant_Patient=:identifiant, categorie_Patient=:categorie,date_rdv=:rdv,prix_Seance=:prix,
+                    nombre_Seance=:seance,id_Medecin=:medecin,id_Indication=:indication,commentaire=:comment where id_Consultation=:consultation';
+            $params = array(
+                "identifiant"=>$identifiant,
+                "categorie"=>$categorie,
+                "rdv"=>$date,
+                "prix"=>$prix,
+                "seance"=>$seance,
+                "medecin"=>$idMedecin,
+                "indication"=>$idIndication,
+                "consultation"=>$id,
+                "comment"=>$comment
+            );
+            $this->update($req,$params);
+
+            $req = "select id_Patient from consultation where id_Consultation =:id";
+            $params = array("id"=>$id);
+
+            $consultation = $this->select($req,$params);
+
+            // var_dump($consultation); exit();
+            // maj de la table patient
+            $req = "update patient set nom=:nom, prenoms=:prenom, age=:age, sexe=:sexe, adresse=:adresse where id_Patient=:patient";
+            $params= array(
+                "nom"=>$nom,
+                "prenom"=>$prenom,
+                "age"=>$age,
+                "sexe"=>$sexe,
+                "adresse"=>$adresse,
+                "patient"=>$consultation[0]['id_Patient']
+            );
+
+            $this->update($req,$params);
+
+            $this->base->commit();
+
+            return 'correct';
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th;
+        }
+    }
+
+    public function insertUser($nom,$pass,$prenom){
+        $req="insert into users values(null,:nom,:pass,:prenom)";
+        $params = array(
+            "nom"=>$nom,
+            "pass"=>$pass,
+            "prenom"=>$prenom
+        );
+
+        return $this->insert($req,$params);
+    }
 }
 
 ?>

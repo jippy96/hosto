@@ -53,7 +53,7 @@
                             <div class="col-md-12" style="margin-left: -10px;">
                                 <nav aria-label="breadcrumb" >
                                     <ol class="breadcrumb" style="background-color: white;">
-                                        <li class="breadcrumb-item"><a href="../?road=manage" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
+                                        <li class="breadcrumb-item"><a href="../?road=accueil" title="Revenir au tableau de bord"><i class="zmdi zmdi-home"></i> Accueil</a></li>
                                         <li class="breadcrumb-item active" aria-current="page"><i class="zmdi zmdi-folder"></i> Consultation</li>
                                     </ol>
                                 </nav>
@@ -63,7 +63,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Liste des Médecins</h3>
+                                <div class="row">
+                                    <div class="col-md-6"><h3 class="title-5 m-b-35">Liste des Pathologies</h3></div>
+                                    <div class="col-md-2 offset-4"><button class="btn btn-primary"><a href="./?action=ajoutIndication" style="color: white">Ajouter encore</a></button></div>
+                                </div>
                                
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table table-data2">

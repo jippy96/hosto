@@ -3,7 +3,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <h3 style="margin-left: 300px;" class="text-center">Gestion Hospitalière</h3>
+                            <h3 style="margin-left: 250px; letter-spacing: 10px; color: blue;" class="text-center">GESTION HOSPITALIERE</h3>
                             <div class="header-button">
                                 
                                 <div class="account-wrap">

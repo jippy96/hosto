@@ -97,6 +97,9 @@ session_start();
             $requete->deleteIndication($id);
             header('Location: ./?action=allIndication');
 
+        }elseif ($_GET['action']=='reset') {
+            # code...
+            header('Location: ./');
         } else {
             # code...
         }

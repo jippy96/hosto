@@ -37,10 +37,10 @@
 
 <body class="animsition" >
     <div class="page-wrapper">
-        <div class="page-content--bge5" style="background-image: url('../images/login.jpg'); background-size: cover;">
+        <div class="page-content--bge5">
             <div class="container" >
                 <br><br><br>
-                <div class="login-wrap" >
+                <div class="login-wrap" style="margin-top: -70px">
                     <div class="login-content" style="background-color: rgba(230, 230, 230,0.7);"> 
                         <div class="login-logo">
                             <a href="#">
@@ -48,8 +48,8 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="?action=auth&erreur=0" method="post">
-                                <h3 class="text-center mb-4">CONNEXION</h3>
+                            <form action="?action=created" method="post">
+                                <h3 class="text-center mb-4">INSCRIPTION</h3>
                                 <?php if (isset($_GET['erreur']) && $_GET['erreur']==1) {
                                     # code...
                                     echo '<div class="alert alert-danger text-center erreur" role="alert">
@@ -59,23 +59,31 @@
                                 ?>
                                 <div class="form-group">
                                     <!-- <label>Nom d'utilisateur</label> -->
+                                    <input required class="au-input au-input--full" type="text" name="nom" placeholder="Votre Nom Complet">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label>Nom d'utilisateur</label> -->
                                     <input required class="au-input au-input--full" type="text" name="username" placeholder="Votre Nom d'utilisateur">
                                 </div>
+                                
 
                                 <div class="form-group">
                                     <!-- <label>Mot de Passe</label> -->
                                     <input required class="au-input au-input--full" type="password" name="password" placeholder="Votre mot de passe">
                                 </div>
+                                <div class="form-group">
+                                    <!-- <label>Mot de Passe</label> -->
+                                    <input required class="au-input au-input--full" type="password" name="password2" placeholder="Confirmer votre mot de passe">
+                                </div>
                                
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Se connecter</button>
-                               <button class="btn btn-primary btn-block m-b-20"> <a href="./?action=create" style="color: whitesmoke;">Créer un Utilisateur</a> </button>                               
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">TERMINER</button>
+                               <button class="btn btn-primary btn-block m-b-20"> <a href="./" style="color: whitesmoke;">ANNULER</a> </button>                               
                             </form>
                             
                         </div>
                     </div>
-                    <?php require '../global/footer.php' ?>
-
                 </div>
+                <?php require '../global/footer.php' ?>
             </div>
         </div>
 
